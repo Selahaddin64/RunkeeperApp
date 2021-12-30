@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "794277981630",
+    "project_id": "runkeeper-7f028",
+    "storage_bucket": "runkeeper-7f028.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794277981630:android:0a1664ab3bd62ce6ff1def",
+        "android_client_info": {
+          "package_name": "com.runkeeper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "794277981630-fb6fkvgmu39ppbkb80n7tqngllhu2b7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkBD4TeRwKDzTuZwk0ecsbqVfdWU-Pbhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "794277981630-fb6fkvgmu39ppbkb80n7tqngllhu2b7b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
