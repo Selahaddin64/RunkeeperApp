@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 
 import space from '../../styles/space';
 
@@ -12,5 +12,6 @@ export default StyleSheet.create({
   },
   input: {
     flex: 1,
+    padding: Platform.OS === 'android' ? 0 : 5,
   },
 });

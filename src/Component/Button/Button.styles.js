@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import colors from '../../styles/color';
+import colors from '../../styles/colors';
 import space from '../../styles/space';
 
 const base_style = StyleSheet.create({
