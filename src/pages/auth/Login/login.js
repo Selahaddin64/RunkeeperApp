@@ -1,25 +1,19 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Text} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {Formik} from 'formik';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import {showMessage} from 'react-native-flash-message';
-
 import authErrorMessageParser from '../../../utils/authErrorMessageParser';
-import Input from '../../../Component/Input';
-import Button from '../../../Component/Button';
+
 import routes from '../../../Navigation/routes';
-
-import styles from './login.styles';
-
-const initialFormValues = {
-  usermail: '',
-  password: '',
-};
+import LoginLayout from './Layout/LoginLayout';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
+  // const route = useRoute();
+  // const {id} = route.params;
+
+  // console.log(id);
 
   const handleSignUp = () => navigation.navigate(routes.SIGN);
 
@@ -41,27 +35,10 @@ export default function Login() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.header}>Runkeeper</Text>
-      <Formik initialValues={initialFormValues} onSubmit={handleFormSubmit}>
-        {({values, handleChange, handleSubmit}) => (
-          <>
-            <Input
-              onChangeText={handleChange('usermail')}
-              value={values.usermail}
-              placeholder="e postanızı giriniz.."
-            />
-            <Input
-              onChangeText={handleChange('password')}
-              value={values.password}
-              placeholder="şifrenizi giriniz.."
-              isSecure
-            />
-            <Button text="Giriş Yap" onPress={handleSubmit} loading={loading} />
-          </>
-        )}
-      </Formik>
-      <Button text="Kayıt Ol" theme="secondary" onPress={handleSignUp} />
-    </SafeAreaView>
+    <LoginLayout
+      onSignIn={handleFormSubmit}
+      onSignUp={handleSignUp}
+      loading={loading}
+    />
   );
 }
