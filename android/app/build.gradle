@@ -3,11 +3,7 @@ apply plugin: 'com.google.gms.google-services'
 
 import com.android.build.OutputFile
 
-project.ext.vectoricons = [
-    iconFontNames: [ 'MaterialCommunityIcons.ttf', 'AntDesign.ttf'] 
-]
 
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
@@ -202,6 +198,14 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
+    implementation(project(':react-native-maps')){
+       exclude group: 'com.google.android.gms', module: 'play-services-base'
+       exclude group: 'com.google.android.gms', module: 'play-services-maps'
+    }
+
+    implementation 'com.google.android.gms:play-services-base:17.2.1'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
     }
@@ -232,3 +236,7 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+apply from: project(':react-native-config').projectDir.getPath() + '/dotenv.gradle'
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
