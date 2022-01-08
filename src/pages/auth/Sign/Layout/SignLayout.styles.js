@@ -13,4 +13,14 @@ export default StyleSheet.create({
     fontSize: 160,
     textAlign: 'center',
   },
+  logo_container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    height: 400,
+    width: 400,
+    backgroundColor: color.green,
+  },
 });

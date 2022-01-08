@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {SafeAreaView, Text, View, Image} from 'react-native';
 import {Formik} from 'formik';
 import {showMessage} from 'react-native-flash-message';
 
@@ -29,18 +29,29 @@ export default function SignLayout({onSignUp, onGoBack, loading}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.header}>Runkeeper</Text>
+      <View style={styles.logo_container}>
+        <Image
+          source={require('../../../../assets/Logo2.png')}
+          style={styles.image}
+        />
+        <Text style={styles.header}>Runkeeper</Text>
+      </View>
+
       <Formik initialValues={initialFormValues} onSubmit={handleFormSubmit}>
         {({values, handleChange, handleSubmit}) => (
           <>
             <Input
               value={values.username}
-              onChangeText={handleChange('username')}
+              onChangeText={text =>
+                handleChange('username')(text.replace(/ /g, ''))
+              }
               placeholder="adınızı giriniz.."
             />
             <Input
               value={values.usersurname}
-              onChangeText={handleChange('usersurname')}
+              onChangeText={text =>
+                handleChange('usersurname')(text.replace(/ /g, ''))
+              }
               placeholder="soyadınızı giriniz.."
             />
             <Input
