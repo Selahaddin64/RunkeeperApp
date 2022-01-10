@@ -1,49 +1,46 @@
-import React, {useEffect, useState} from 'react';
-import {SafeAreaView, Text} from 'react-native';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import auth from '@react-native-firebase/auth';
-import database from '@react-native-firebase/database';
+import React from 'react';
+import {SafeAreaView, Text, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
-import parseContentData from '../../utils/parseContentData';
+import ActivityCard from '../../Component/Cards/ActivityCard';
 import Button from '../../Component/Button';
 import routes from '../../Navigation/routes';
-
 import styles from './Dashboard.styles';
 
 export default function Dashboard() {
-  const [contentList, setContentList] = useState([]);
+  const item = useSelector(state => state.previousRuns);
   const navigation = useNavigation();
-  // const route = useRoute();
-  // const item = route.params;
 
   const handleNewActivity = () => navigation.navigate(routes.NEWACTIVITY);
 
-  // const item = auth().currentUser.email;
+  const handleActivityList = () =>
+    navigation.navigate(routes.ACTIVITYSUMMARYLİST);
 
-  // const date = new Date().toISOString();
-  // const userName = item.split('@')[0];
-
-  useEffect(() => {
-    database()
-      .ref('users/')
-      .on('value', snapshot => {
-        const contentData = snapshot.val();
-
-        const parsedData = parseContentData(contentData || {});
-        setContentList(parsedData);
-      });
-  }, []);
-
+  const handleLeaderBoard = () => {
+    navigation.navigate(routes.LEADERBOARD);
+  };
+  
   return (
     <SafeAreaView style={styles.container}>
-      {/* <Text>{date}</Text> */}
-      <Text>{`Merhaba ${contentList.username} aktivitenize hoşgeldiniz.`}</Text>
-      <Text style={styles.header}>toplam yapılan mesafe</Text>
-      <Text style={styles.header}> toplam süre</Text>
-      <Text style={styles.header}>aktivite sayısı</Text>
-      <Button text="Yeni Aktivite" onPress={handleNewActivity}/>
-      <Button text="Aktivite Geçmişim" />
-      <Button text="Leaderboard" />
+      {item.length === 0 ? (
+        <View style={styles.innerContainer}>
+          <Text style={styles.text_warning}>
+            No Activity Found! Let's Start Running!!
+          </Text>
+          <Button text="New Activity" onPress={handleNewActivity} />
+          <Button text="Activity List" onPress={handleActivityList} />
+          <Button text="Leaderboard" onPress={handleLeaderBoard} />
+        </View>
+      ) : (
+        <ActivityCard
+          day={item.day}
+          timeOfDay={item.timeOfDay}
+          distance={item.distance}
+          time={item.time}
+          cal={item.cal}
+        />
+      )}
     </SafeAreaView>
   );
 }
