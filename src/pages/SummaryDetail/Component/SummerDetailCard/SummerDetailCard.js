@@ -35,15 +35,11 @@ const SummaryDetailCard = ({
   containerBorderColor,
   metricValue,
 }) => {
-  // Reference to TextInput component
   const textInputRef = useRef();
 
   return (
-    // Main Container
     <Pressable style={styles.mainContainer} onPress={() => Keyboard.dismiss()}>
-      {/* Day-Time */}
-      <Text style={styles.subheading}>{day} - 07:28</Text>
-      {/* TextInput- heading with pencil icon */}
+      <Text style={styles.subheading}>{day}</Text>
       <Pressable
         style={styles.textInputContainer}
         onPress={() => textInputRef.current.focus()}>
@@ -60,12 +56,10 @@ const SummaryDetailCard = ({
         style={styles.KeyboardAvoidingView}
         keyboardVerticalOffset={-100}>
         <View style={styles.kilometerContainer}>
-          {/* Kilometers */}
           <View style={styles.innerKilometerContainer}>
             <Text style={styles.kilometerValue}>{distance.toFixed(1)}</Text>
             <Text style={styles.kilometerMetric}>Kilometers</Text>
           </View>
-          {/* Metric pace, time and calories */}
           <View style={styles.metricContainer}>
             <View>
               <Text style={styles.metricValue}>
@@ -84,7 +78,6 @@ const SummaryDetailCard = ({
               <Text style={styles.metric}>Calories</Text>
             </View>
           </View>
-          {/* LOGO AND Progress bar */}
           <View style={styles.ImageLogoContainer}>
             <Image
               source={require('../../../../assets/Logo2.png')}

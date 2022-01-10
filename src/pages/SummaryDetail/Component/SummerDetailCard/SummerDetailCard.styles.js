@@ -75,7 +75,7 @@ export default StyleSheet.create({
     right: 0,
     width: 20,
     height: 25,
-    top: height * 0.34,
+    top: height * 0.25,
     left: width * 0.83,
   },
   progressBarContainer: {

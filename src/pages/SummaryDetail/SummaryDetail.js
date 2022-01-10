@@ -5,9 +5,7 @@ import {Levels} from '../../utils/Levels';
 import SummaryDetailCard from './Component/SummerDetailCard/SummerDetailCard';
 
 const SummaryDetail = ({route}) => {
-  // Getting total Kms ran from redux
   const totalKmRan = useSelector(state => state.totalKms);
-  // Props from each run
   const props = route.params;
   console.log(props);
   const [title, setTitle] = useState('');
@@ -16,7 +14,7 @@ const SummaryDetail = ({route}) => {
     useState('orange');
   const [progress, setProgress] = useState('20%');
   const [kilometerLeft, setKilometerLeft] = useState(0);
-  // Function to change title input
+
   const titleChangeHandler = input => {
     setTitle(input);
   };
@@ -40,7 +38,6 @@ const SummaryDetail = ({route}) => {
     }
   };
 
-  // This hook works only once
   useEffect(() => {
     const startTite = props.day + ' ' + props.timeOfDay + ' Run';
     setTitle(startTite);
