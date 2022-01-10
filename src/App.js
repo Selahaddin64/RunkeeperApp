@@ -1,7 +1,8 @@
 import React from 'react';
 import Navigation from './Navigation';
-import {Provider, useDispatch} from 'react-redux';
+import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
+import FlashMessage from 'react-native-flash-message';
 import ReduxThunk from 'redux-thunk';
 import SplashScreen from 'react-native-splash-screen';
 
@@ -13,10 +14,11 @@ export default function App() {
   React.useEffect(() => {
     SplashScreen.hide();
   }, []);
-  
+
   return (
     <Provider store={store}>
       <Navigation />
+      <FlashMessage position="top" />
     </Provider>
   );
 }
