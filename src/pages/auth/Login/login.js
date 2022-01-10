@@ -10,11 +10,7 @@ import LoginLayout from './Layout/LoginLayout';
 export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
-  // const route = useRoute();
-  // const {id} = route.params;
-
-  // console.log(id);
-
+  
   const handleSignUp = () => navigation.navigate(routes.SIGN);
 
   async function handleFormSubmit(formValues) {

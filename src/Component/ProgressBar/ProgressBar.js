@@ -1,6 +1,7 @@
 // Progress bar used in summary and running screen
 import React from 'react';
 import {View} from 'react-native';
+
 import styles from './ProgressBar.styles';
 
 const ProgressBar = ({

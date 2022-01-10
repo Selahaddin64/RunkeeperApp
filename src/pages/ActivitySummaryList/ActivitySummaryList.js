@@ -7,7 +7,6 @@ import styles from './ActivitySummaryList.styles';
 
 const ActivitySummaryList = () => {
   const DATA = useSelector(state => state.previousRuns);
-  console.log(DATA);
   const renderItem = ({item}) => (
     <ActivityCard
       day={item.day}
@@ -20,7 +19,7 @@ const ActivitySummaryList = () => {
 
   return (
     <View style={styles.container}>
-      {DATA.length == 0 ? (
+      {DATA.length === 0 ? (
         <View style={styles.innerContainer}>
           <Text style={styles.text_warning}>
             No Activity Found! Let's Start Running!!

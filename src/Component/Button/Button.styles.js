@@ -27,7 +27,7 @@ export default {
     ...base_style,
     container: {
       ...base_style.container,
-      backgroundColor: colors.green,
+      backgroundColor: colors.orange,
     },
     title: {
       ...base_style.title,
@@ -41,11 +41,11 @@ export default {
       ...base_style.container,
       backgroundColor: 'white',
       borderWidth: 1,
-      borderColor: colors.green,
+      borderColor: colors.orange,
     },
     title: {
       ...base_style.title,
-      color: colors.green,
+      color: colors.orange,
     },
   }),
 };

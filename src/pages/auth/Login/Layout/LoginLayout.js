@@ -29,19 +29,19 @@ export default function LoginLayout({onSignUp, onSignIn, loading}) {
             <Input
               onChangeText={handleChange('usermail')}
               value={values.usermail}
-              placeholder="e postanızı giriniz.."
+              placeholder="enter your e-mail.."
             />
             <Input
               onChangeText={handleChange('password')}
               value={values.password}
-              placeholder="şifrenizi giriniz.."
+              placeholder="enter your password.."
               isSecure
             />
-            <Button text="Giriş Yap" onPress={handleSubmit} loading={loading} />
+            <Button text="Login" onPress={handleSubmit} loading={loading} />
           </>
         )}
       </Formik>
-      <Button text="Kayıt Ol" theme="secondary" onPress={onSignUp} />
+      <Button text="Sign in" theme="secondary" onPress={onSignUp} />
     </SafeAreaView>
   );
 }

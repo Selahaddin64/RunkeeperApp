@@ -19,7 +19,7 @@ export default function SignLayout({onSignUp, onGoBack, loading}) {
   function handleFormSubmit(formValues) {
     if (formValues.password !== formValues.repassword) {
       showMessage({
-        message: 'Şifreler uyuşmuyor',
+        message: 'Passwords do not match',
         type: 'danger',
       });
       return null;
@@ -45,37 +45,37 @@ export default function SignLayout({onSignUp, onGoBack, loading}) {
               onChangeText={text =>
                 handleChange('username')(text.replace(/ /g, ''))
               }
-              placeholder="adınızı giriniz.."
+              placeholder="enter your username.."
             />
             <Input
               value={values.usersurname}
               onChangeText={text =>
                 handleChange('usersurname')(text.replace(/ /g, ''))
               }
-              placeholder="soyadınızı giriniz.."
+              placeholder="enter your usersurname.."
             />
             <Input
               value={values.usermail}
               onChangeText={handleChange('usermail')}
-              placeholder="e postanızı giriniz.."
+              placeholder="enter your e-mail.."
             />
             <Input
               value={values.password}
               onChangeText={handleChange('password')}
-              placeholder="şifrenizi giriniz.."
+              placeholder="enter your password.."
               isSecure
             />
             <Input
               value={values.repassword}
               onChangeText={handleChange('repassword')}
-              placeholder="şifrenizi tekrar giriniz.."
+              placeholder="re-enter your password.."
               isSecure
             />
-            <Button text="Kayıt Ol" loading={loading} onPress={handleSubmit} />
+            <Button text="Sign in" loading={loading} onPress={handleSubmit} />
           </>
         )}
       </Formik>
-      <Button text="Giriş Sayfasına Git" theme="secondary" onPress={onGoBack} />
+      <Button text="Go to Login Page" theme="secondary" onPress={onGoBack} />
     </SafeAreaView>
   );
 }

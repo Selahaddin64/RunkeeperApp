@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/core';
 import auth from '@react-native-firebase/auth';
-import database from '@react-native-firebase/database';
 import {showMessage} from 'react-native-flash-message';
+import {useDispatch} from 'react-redux';
 
+import * as Actions from '../../../Context/actions/action';
 import authErrorMessageParser from '../../../utils/authErrorMessageParser';
-import routes from '../../../Navigation/routes';
 import SignLayout from './Layout/SignLayout';
 
 export default function Sign() {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const handleReturnSignIn = () => {
     if (!navigation.canGoBack()) {
@@ -19,27 +20,20 @@ export default function Sign() {
 
     navigation.goBack();
   };
-  function sendContent(formValues) {
-    const contentObject = {
-      username: formValues.username,
-      usersername: formValues.usersername,
-    };
-    console.log(formValues);
-    database.ref('users/').push(contentObject);
-  }
+
   async function handleFormSubmit(formValues) {
-    sendContent(formValues);
+    const name = formValues.username;
     try {
       await auth().createUserWithEmailAndPassword(
         formValues.usermail,
         formValues.password,
       );
-      navigation.navigate(routes.LOGIN);
       showMessage({
-        message: 'Kullanıcı oluşturuldu',
+        message: 'User created',
         type: 'success',
       });
       setLoading(false);
+      dispatch(Actions.get_user_data(name));
     } catch (error) {
       showMessage({
         message: authErrorMessageParser(error.code),
