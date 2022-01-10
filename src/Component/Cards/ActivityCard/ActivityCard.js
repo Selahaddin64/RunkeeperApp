@@ -6,8 +6,8 @@ import {
   calculatePace,
   pacePresentation,
   secondsToHm,
-} from '../../utils/Calculations';
-import routes from '../../Navigation/routes';
+} from '../../../utils/Calculations';
+import routes from '../../../Navigation/routes';
 import styles from './ActivityCard.styles';
 
 

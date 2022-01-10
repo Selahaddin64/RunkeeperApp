@@ -2,7 +2,7 @@ import React from 'react';
 import {View, FlatList, Text} from 'react-native';
 import {useSelector} from 'react-redux';
 
-import ActivityCard from '../../Component/ActivityCard';
+import ActivityCard from '../../Component/Cards/ActivityCard';
 import styles from './ActivitySummaryList.styles';
 
 const ActivitySummaryList = () => {
