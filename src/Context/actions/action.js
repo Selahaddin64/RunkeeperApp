@@ -1,3 +1,5 @@
+import {Alert} from 'react-native';
+
 export const SAVE_CURRENT_RUN = 'SAVE_CURRENT_RUN';
 export const SAVE_RUN_TO_DB = 'SAVE_RUN_TO_DB';
 export const GET_USER_DATA = 'GET_USER_DATA';
@@ -19,7 +21,7 @@ export const save_run_to_db = data => {
     });
 
     const response = await fetch(
-      'https://runkeeper-7f028-default-rtdb.firebaseio.com/Users/' +
+      'https://running-98734-default-rtdb.firebaseio.com/Users/' +
         getData().userName +
         '.json',
       {
@@ -28,22 +30,24 @@ export const save_run_to_db = data => {
         body: rawBody,
       },
     );
+
     const responseJSON = await response.json();
+    // database()
+    // .ref('users/' + getData().userName)
     // Adding firebase id to current run
-    data.id = responseJSON.username;
+    data.id = responseJSON.name;
     dispatch({type: SAVE_RUN_TO_DB, data});
   };
 };
 
 // Getting user information from DB
-export const get_user_data = username => {
-  console.log('Getting user info');
+export const get_user_data = name => {
   return async dispatch => {
     let responseJSON;
     try {
       const response = await fetch(
-        'https://runkeeper-7f028-default-rtdb.firebaseio.com/Users/' +
-          username +
+        'https://nike-run-club-yt-default-rtdb.firebaseio.com/Users/' +
+          name +
           '.json',
         {
           method: 'GET',
@@ -53,8 +57,12 @@ export const get_user_data = username => {
       responseJSON = await response.json();
     } catch (error) {
       responseJSON = {};
-      console.error(error);
+      Alert.alert('error', error);
     }
-    dispatch({type: GET_USER_DATA, data: responseJSON, userName: username});
+    dispatch({
+      type: GET_USER_DATA,
+      data: responseJSON,
+      userName: name,
+    });
   };
 };

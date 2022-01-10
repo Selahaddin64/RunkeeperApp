@@ -17,7 +17,6 @@ const reducer = (state = initialState, actions) => {
       break;
     case SAVE_RUN_TO_DB:
       state.previousRuns.unshift(actions.data);
-      // eslint-disable-next-line radix
       state.totalKms = state.totalKms + parseInt(actions.data.distance);
       break;
     case GET_USER_DATA:
@@ -34,7 +33,6 @@ const reducer = (state = initialState, actions) => {
           time: data[item].time,
           timeOfDay: data[item].timeOfDay,
         });
-        // eslint-disable-next-line radix
         totalKm = totalKm + parseInt(data[item].distance);
       }
       state.previousRuns = runs;
